@@ -1,4 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 
-add_subdirectory(tests)
+if(NOT ULOG_SKIP_TESTS)
+	add_subdirectory(tests)
+endif()
+
 add_subdirectory(src)
