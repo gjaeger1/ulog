@@ -50,7 +50,6 @@ typedef struct {
 // local storage
 
 static subscriber_t s_subscribers[ULOG_MAX_SUBSCRIBERS];
-static char s_message[ULOG_MAX_MESSAGE_LENGTH];
 
 // =============================================================================
 // user-visible code
@@ -111,6 +110,7 @@ const char *ulog_level_name(ulog_level_t severity) {
 void ulog_message(ulog_level_t severity, const char *fmt, ...) {
   va_list ap;
   int i;
+  char s_message[ULOG_MAX_MESSAGE_LENGTH];
   va_start(ap, fmt);
   vsnprintf(s_message, ULOG_MAX_MESSAGE_LENGTH, fmt, ap);
   va_end(ap);
@@ -127,4 +127,4 @@ void ulog_message(ulog_level_t severity, const char *fmt, ...) {
 // =============================================================================
 // private code
 
-#endif  // #ifdef ULOG_ENABLED
+#endif  // #ifdef ULOG_ENABLED
